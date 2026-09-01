@@ -1,11 +1,13 @@
 [package]
-name = "http-error"
+name = "http-errors"
 version = "0.1.0"
 edition = "2024"
 rust-version = "1.85"
 description = "Derive macro for mapping error enums to HTTP status codes with IntoResponse"
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/WyattAu/http-error"
+keywords = ["http", "error", "status"]
+categories = ["web-programming"]
 exclude = ["/target"]
 
 [dependencies]
@@ -15,6 +17,7 @@ thiserror = "2"
 http = "1"
 
 [dev-dependencies]
+proptest = "1"
 tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
 
 [lints.rust]
