@@ -46,22 +46,3 @@ pub trait HttpError {
     /// Get a sanitized error message (no internal details).
     fn public_message(&self) -> String;
 }
-
-/// Convert a `sqlx::Error` to an HTTP error code.
-impl HttpError for sqlx::Error {
-    fn status_code(&self) -> u16 {
-        match self {
-            sqlx::Error::RowNotFound => 404,
-            sqlx::Error::Database(ref db) => {
-                if db.code().map(|c| c == "23505").unwrap_or(false) {
-                    409 // unique constraint violation
-                } else {
-                    500
-                }
-            }
-            _ => 500,
-        }
-    }
-    fn error_code(&self) -> &str { "DATABASE_ERROR" }
-    fn public_message(&self) -> String { "A database error occurred".to_string() }
-}
