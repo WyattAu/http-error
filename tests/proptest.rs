@@ -21,7 +21,7 @@ proptest! {
     #[test]
     fn status_code_always_valid_http(code in arb_error_code()) {
         let status = code.status_code();
-        prop_assert!(status >= 100 && status < 600);
+        prop_assert!((100..600).contains(&status));
     }
 
     #[test]
@@ -40,7 +40,7 @@ proptest! {
 
     #[test]
     fn error_code_clone_preserves_value(code in arb_error_code()) {
-        let cloned = code.clone();
+        let cloned = code;
         prop_assert_eq!(code.status_code(), cloned.status_code());
     }
 
