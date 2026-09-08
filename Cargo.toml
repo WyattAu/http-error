@@ -11,7 +11,9 @@ categories = ["web-programming"]
 exclude = ["/target"]
 
 [dependencies]
-serde = { version = "1", default-features = false, features = ["derive"] }
+# Thin re-export shim over `errcode` (package `error-codes`), which is now the
+# single status-mapping story (ErrorCode + ErrCode + HttpError + RFC 7807).
+error-codes = { version = "1.0", path = "../errcode", default-features = false, features = ["serde_impl"] }
 
 [dev-dependencies]
 proptest = "1"

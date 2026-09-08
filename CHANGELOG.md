@@ -5,6 +5,14 @@ Changelog](https://keepachangelog.com/) — versions follow [semver](https://sem
 
 ## [Unreleased]
 
+### Changed
+- This crate is now a thin re-export shim over `errcode` (package
+  `error-codes`, the single status-mapping story: `ErrorCode` + `ErrCode` +
+  `HttpError` + RFC 7807). `ErrorCode` variants, `status_code()`, the
+  `HttpError` trait, and the serde shape are unchanged; `Unauthorized` /
+  `Forbidden` / `Auth` / `Unavailable` variants plus `status()`, `as_str()`,
+  `reason()`, and `type_uri()` come along via the re-export.
+
 ### Added
 - `no_std` support (core + alloc; the crate never needed std).
 

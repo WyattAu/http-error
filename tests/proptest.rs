@@ -1,8 +1,12 @@
 //! Property-based tests for http-errors crate.
+//!
+//! Shim validation: everything historically importable from `http-errors`
+//! still resolves through the `errcode` re-export (`ErrorCode::status_code`,
+//! `HttpError`, serde shape).
 
 use proptest::prelude::*;
 
-use http_errors::ErrorCode;
+use http_errors::{ErrorCode, HttpError};
 
 fn arb_error_code() -> impl Strategy<Value = ErrorCode> {
     prop_oneof![
@@ -36,6 +40,17 @@ proptest! {
     fn status_code_is_client_or_server_error(code in arb_error_code()) {
         let status = code.status_code();
         prop_assert!((400..600).contains(&status));
+    }
+
+    #[test]
+    fn status_code_alias_matches_status(code in arb_error_code()) {
+        prop_assert_eq!(code.status_code(), code.status());
+    }
+
+    #[test]
+    fn http_error_trait_matches_inherent_mapping(code in arb_error_code()) {
+        prop_assert_eq!(<ErrorCode as HttpError>::status_code(&code), code.status());
+        prop_assert_eq!(<ErrorCode as HttpError>::error_code(&code), code.as_str());
     }
 
     #[test]
