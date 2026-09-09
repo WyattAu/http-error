@@ -1,3 +1,6 @@
+// Property tests assert invariants directly; unwraps keep failures loud.
+#![allow(clippy::unwrap_used, clippy::expect_used)]
+
 //! Property-based tests for http-errors crate.
 //!
 //! Shim validation: everything historically importable from `http-errors`
