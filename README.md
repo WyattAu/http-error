@@ -1,4 +1,5 @@
 # http-error
+[![Estate integration](https://github.com/WyattAu/estate-integration/actions/workflows/ci.yml/badge.svg)](https://github.com/WyattAu/estate-integration/actions/workflows/ci.yml)
 
 > Derive macro for mapping error enums to HTTP status codes.
 
