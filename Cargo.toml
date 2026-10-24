@@ -1,9 +1,9 @@
 [package]
 name = "http-errors"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 rust-version = "1.85"
-description = "Derive macro for mapping error enums to HTTP status codes with IntoResponse"
+description = "Derive macro for mapping error enums to HTTP status codes"
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/WyattAu/http-error"
 keywords = ["http", "error", "status"]
@@ -13,7 +13,7 @@ exclude = ["/target"]
 [dependencies]
 # Thin re-export shim over `errcode` (package `error-codes`), which is now the
 # single status-mapping story (ErrorCode + ErrCode + HttpError + RFC 7807).
-error-codes = { version = "1.0", path = "../errcode", default-features = false, features = ["serde_impl"] }
+error-codes = { version = "1", path = "../errcode", default-features = false, features = ["serde_impl"] }
 
 [dev-dependencies]
 proptest = "1"
