@@ -1,11 +1,11 @@
-# Threat Model — http-error
+# Threat Model: http-error
 
 Reference: STRIDE. Scope: the crate's public API surface. Trust boundary:
 (1) bytes/inputs entering public constructors and parsers, (2) concurrent
-callers sharing interior state. http-error is an in-process library — it opens
+callers sharing interior state. http-error is an in-process library; it opens
 no sockets and inherits the embedding process's trust domain.
 
-Purpose: HTTP error mapping (`http-errors`) — derive macro mapping error enums to status codes (re-export shim over `error-codes`)
+Purpose: HTTP error mapping (`http-errors`); derive macro mapping error enums to status codes (re-export shim over `error-codes`)
 
 ## Assets
 

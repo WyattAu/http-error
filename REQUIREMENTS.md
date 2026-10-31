@@ -1,9 +1,9 @@
-# Requirements — http-error
+# Requirements: http-error
 
 Numbered, testable requirements. Every requirement maps to at least one named
 test or doc-comment contract; security-relevant items cite threat-model rows.
 
-Scope: HTTP error mapping (`http-errors`) — derive macro mapping error enums to status codes (re-export shim over `error-codes`)
+Scope: HTTP error mapping (`http-errors`); derive macro mapping error enums to status codes (re-export shim over `error-codes`)
 
 ## Functional
 
